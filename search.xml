@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>在 GitHub Pages 上部署 Hexo</title>
+      <link href="2020/11/24/post01/"/>
+      <url>2020/11/24/post01/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><p>-GitHub Pages和Hexo的介绍<br>GitHub ：GitHub是一个面向开源及私有软件项目的托管平台，因为只支持git 作为唯一的版本库格式进行托管，故名GitHub<br>GitHub Pages ：是用来托管 GitHub 上静态网页的免费站点<br>Hexo : Hexo 是一个简单、快速、强大的静态博客框架<br>-安装Node.js<br>Node.js官网 点击自己需要的版本默认安装即可<br>在这里插入图片描述</p><p>-安装Git<br>Git 官网 点击自己需要的版本默认安装即可<br>在这里插入图片描述</p><p>-验证是否安装成功<br>-点击Git Bash<br>在这里插入图片描述<br>打开之后出现下图的情况，说明安装成功<br>在这里插入图片描述</p><p>-点击鼠标右键<br>出现红框里的东西，就说明已经安装成功<br>在这里插入图片描述</p><p>-安装Hexo<br>Hexo就是我们的个人博客网站的框架， 这里需要自己在某个磁盘里创建一个文件夹，Hexo框架和以后你自己发布的网页都在这个文件夹中<br>我在E盘里创建了一个文件夹<br>在这里插入图片描述</p><p>在该文件夹下右键鼠标，点击 Git Bash Here，输入npm 命令即可安装<br>第一个命令表示安装 hexo，第二个命令表示安装 hexo 部署到 git page 的 deployer<br>$ npm install hexo-cli -g<br>$ npm install hexo-deployer-git –save<br>1<br>2<br>如图所示即为安装成功（安装比较慢，请耐心等待）<br>在这里插入图片描述</p><p>-Hexo 初始化配置<br>在刚才新建的文件夹里，再建一个文件夹Hexo，然后打开该文件夹，并打开Git Bash Here，输入下面的命令</p><p>$ hexo init<br>1<br>如图所示即安装成功<br>在这里插入图片描述</p><p>-查看网站初始效果<br>执行以下命令</p><p>$ hexo generate<br>$ hexo server<br>1<br>2<br>如图所示即成功<br>在这里插入图片描述<br>然后登录 <a href="http://localhost:4000/">http://localhost:4000/</a> 查看效果：<br>在这里插入图片描述</p><ul><li>将博客部署到 Github Pages 上<br>现在我们只能在本地连接里看到自己的博客网站，所以以下的操作是让其他人能够访问我们的网站</li></ul><p>-注册git<br>点击git官网进行注册<br>在这里插入图片描述</p><p>-创建 repository<br>在这里插入图片描述<br>点击新建<br>在这里插入图片描述<br>按下面的图片进行操作<br>在这里插入图片描述</p><p>-配置GitHub账户信息<br>打开Git Bash 输入以下命令</p><p> $ git config –global user.name “你的用户名”<br> $ git config –global user.email  “你的邮箱”<br>1<br>2<br>在这里插入图片描述</p><p>-配置SSH密钥<br>只有配置好 SSH 密钥后，我们才可以通过 git 操作实现本地代码库与 Github 代码库同步，在你第一次新建的文件夹里面点击Git Bash Here 输入以下命令：</p><p>$ ssh-keygen -t rsa -C “你的邮箱”<br>Generating public/private rsa key pair.<br>Enter file in which to save the key (/Users/your_user_directory/.ssh/id_rsa):&lt;回车就好&gt;<br>1<br>2<br>3<br>这里的邮箱地址，输入注册 Github 的邮箱地址<br>-C的是大写的C<br>然后系统会要你输入密码：</p><p>Enter passphrase (empty for no passphrase):&lt;设置密码&gt;<br>Enter same passphrase again:&lt;再次输入密码&gt;<br>1<br>2<br>在回车中会提示你输入一个密码，这个密码会在你提交项目时使用，如果为空的话提交项目时则不用输入。这个设置是防止别人往你的项目里提交内容（其实没有必要设置密码）</p><p>注意：输入密码的时候没有输入痕迹的，不要以为什么也没有输入。</p><p>最后看到这样的界面，就成功设置ssh key了：<br>在这里插入图片描述</p><p>-在 GitHub 账户中添加你的公钥<br>运行下面的命令，将公钥的内容复制到系统粘贴板上</p><p>$ clip &lt; ~/.ssh/id_rsa.pub<br>1<br>打开GitHub<br>在这里插入图片描述<br>在这里插入图片描述<br>把$ clip &lt; ~/.ssh/id_rsa.pub这个命令，在系统粘贴板上的内容粘贴上去就可以了<br>在这里插入图片描述<br>最后出现下面的画面<br>在这里插入图片描述</p><p>-测试<br>输入下面的命令（千万不要改动下面的命令，按照此模式直接输入就好了）</p><p>$ ssh -T <a href="mailto:&#103;&#105;&#116;&#x40;&#x67;&#x69;&#x74;&#104;&#x75;&#x62;&#x2e;&#99;&#x6f;&#x6d;">&#103;&#105;&#116;&#x40;&#x67;&#x69;&#x74;&#104;&#x75;&#x62;&#x2e;&#99;&#x6f;&#x6d;</a><br>1<br>输入命令后和下面一样，直接在后面输入yes即可<br>在这里插入图片描述<br>最后会出现如下情况即说明设置正确<br>在这里插入图片描述<br>到现在为止 SSH Key 配置成功，本机已成功连接到 Github！！！</p><p>-将本地的 Hexo 文件更新到 Github 的库中<br>登录GitHub打开项目<br>在这里插入图片描述</p><p>打开你创建的 Hexo 文件夹打开该文件夹下的 _config.yml 文件，用记事本打开就可以<br>找到下图所示的位置，并按照图片进行修改<br>在这里插入图片描述</p><p>在 Hexo 文件夹下分别执行以下命令<br>$ npm install hexo-deployer-git –save</p><p> #该操作是安装deployer ，这样你才能将写好的文章部署到github上让别人浏览到<br>1<br>2<br>3<br>之后输入</p><p>$ hexo g -d<br>1<br>最后出现下图情况，说明博客部署到 Github 上了<br>在这里插入图片描述</p><p>访问博客<br>你的博客地址：https://你的用户名.github.io，比如我的是：<a href="https://aixiaorui.github.io/">https://aixiaorui.github.io</a> ,现在每个人都可以通过此链接访问你的博客了</p><ul><li>编写文章并发布到博客上<br>在Hexo目录下，带你家右键打开Git Bash，输入下面的命令，会创建一个后缀名为.md的文档<br>$ hexo n “文章标题”<br>1<br>也可以直接在 \Hexo\source_posts 目录下右键鼠标新建文本文档，改后缀为 .md 即可<br>只不过我们用第一种方法它会自动生成如下的内容</li></ul><p>$ hexo n “my first blog”<br>1<br>在这里插入图片描述<br>一般完整格式如下：<br>在这里插入图片描述<br>当文章写好之后，在Hexo目录下输入下面的命令发表到博客上：</p><p>$ hexo d -g<br>1</p><ul><li>更换Hexo的主题<br>打开这个链接进入到Hexo的官网更换主题</li></ul><p>我使用的是下面框起来的主题<br>在这里插入图片描述<br>点开之后滑到网页的最下面，点击矩形框内的链接<br>在这里插入图片描述<br>找到图内的位置，按它的步骤操作即可（注意要在themes目录下，输入命令）<br>在这里插入图片描述<br>下载完成后在themes目录下会又出现一个themes文件夹，此文件夹里面就是我们下载的主题<br>在这里插入图片描述<br>themes文件夹里面的文件</p><p>在这里插入图片描述<br>我们先把material-x文件移出来，然后把themes文件夹删除</p><p>按照下面的图片打开文档<br>在这里插入图片描述<br>把主题改成我们下载的主题<br>在这里插入图片描述<br>返回 Hexo 目录，右键 Git Bash ，输入以下命令开始部署主题：</p><p>$ hexo g<br>$ hexo s<br>1<br>2<br>此时访问 <a href="http://localhost:4000/">http://localhost:4000/</a> 就可看见我们的主题已经更换了，如果感觉效果满意，我们就可以把它部署到Github上了</p><p>打开 Hexo 文件夹，右键 Git Bash，输入以下命令：</p><p> $ hexo clean<br> //该命令的作用是清除缓存，若不输入此命令，服务器有可能更新不了主题<br> $ hexo g -d<br>1<br>2<br>3<br>这样我们的主题就更换完毕了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> blog </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> GitHub Pages </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>我为什么而活着[英]罗素</title>
+      <link href="2020/11/23/hello-world/"/>
+      <url>2020/11/23/hello-world/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><p>对爱情的渴望，对知识的追求，对人类苦难不可遏制的同情心，这三种纯洁但无比强烈的激情支配着我的一生。这三种激情，就像飓风一样，在深深的苦海上，肆意地把我吹来吹去，吹到濒临绝望的边缘。<br>我寻求爱情，首先因为爱情给我带来狂喜，它如此强烈，以致我经常愿意为了几小时的欢愉而牺牲生命中的其他一切。我寻求爱情，其次是因为爱情解除孤寂——那是一颗震颤的心，在世界的边缘，俯瞰那冰冷死寂、深不可测的深渊。我寻求爱情，最后是因为在爱情的结合中，我看到圣徒和诗人们所想象的天空景象的神秘缩影。这就是我所寻求的，虽然它对人生似乎过于美好，然而最终我还是得到了它。<br>我以同样的热情寻求知识，我希望了解人的心灵。我希望知道星星为什么闪闪发光，我试图理解毕达哥拉斯的思想威力，即数字支配着万物流转。这方面我获得一些成就，然而并不多。<br>爱情和知识，尽可能地把我引上天堂，但同情心总把我带回尘世。痛苦的呼号的回声在我心中回荡，饥饿的儿童，被压迫者折磨的受害者，被儿女视为可厌负担的无助的老人，以及充满孤寂、贫穷和痛苦的整个世界，都是对人类应有生活的嘲讽。我渴望减轻这些不幸，但是我无能为力，而且我自己也深受其害。<br>这就是我的一生，我觉得它值得活。如果有机会的话，我还乐意再活一次。</p><p><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606132848672&di=9300049b29a506e0a7739fe3a0ddcd59&imgtype=0&src=http://5b0988e595225.cdn.sohucs.com/q_70,c_zoom,w_640/images/20180621/e3b5e0b732f74ef78a703bcba6f57ad7.jpeg" alt="avatar"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 价值观 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 信仰 </tag>
+            
+            <tag> 人生 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
